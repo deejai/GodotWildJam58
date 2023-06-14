@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3nklnpp2kq3"]
+
+[ext_resource type="Script" path="res://Autoload/AudioPlayer.gd" id="1_rrtgy"]
+[ext_resource type="AudioStream" uid="uid://dgae3roc6wwo4" path="res://Assets/Audio/rain-in-forest-birds-nature-111405.mp3" id="2_fivum"]
+
+[node name="AudioPlayer" type="Node2D"]
+script = ExtResource("1_rrtgy")
+
+[node name="RainLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fivum")
+volume_db = -12.0

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://brae17nbsvrsc"]
+
+[ext_resource type="Script" path="res://Objects/Rabbit.gd" id="1_68alb"]
+[ext_resource type="Texture2D" uid="uid://7n5o0pdr5wa" path="res://Assets/rabbit-staring.png" id="1_e3ox3"]
+
+[node name="Rabbit" type="Node3D"]
+script = ExtResource("1_68alb")
+
+[node name="rabbit" type="Sprite3D" parent="."]
+transform = Transform3D(0.0783003, 0, 0, 0, 0.0783003, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("1_e3ox3")

@@ -1,0 +1,95 @@
+[gd_scene load_steps=18 format=3 uid="uid://bytgjick2urib"]
+
+[ext_resource type="Texture2D" uid="uid://ch2str426p6r8" path="res://Assets/tree-mtg.png" id="1_6cuxm"]
+[ext_resource type="Texture2D" uid="uid://b4hiw0l5kmlmf" path="res://Assets/tree-tall.png" id="1_d7vts"]
+[ext_resource type="Script" path="res://Demo.gd" id="1_up2fw"]
+[ext_resource type="Shader" path="res://ground.gdshader" id="2_1e087"]
+[ext_resource type="Shader" path="res://sky.gdshader" id="2_33x8f"]
+[ext_resource type="Texture2D" uid="uid://cimpn85luwg7u" path="res://Assets/tree-cartoony.png" id="3_roqgj"]
+[ext_resource type="Texture2D" uid="uid://dbvosii04t" path="res://Assets/green-bg-full.png" id="3_xdj1d"]
+[ext_resource type="Texture2D" uid="uid://gp6d4k04f5e1" path="res://Assets/sky-blue.png" id="4_pi8bn"]
+[ext_resource type="PackedScene" uid="uid://bjfb6nimdasq8" path="res://Objects/Cloud1.tscn" id="10_28qjk"]
+[ext_resource type="PackedScene" uid="uid://brae17nbsvrsc" path="res://Objects/Rabbit.tscn" id="11_2knhs"]
+[ext_resource type="PackedScene" uid="uid://c0aqcu8vwdw67" path="res://Objects/Cloud2.tscn" id="11_hphhi"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uels5"]
+frequency = 0.022
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3hi84"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_uels5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhvuq"]
+render_priority = 0
+shader = ExtResource("2_1e087")
+shader_parameter/ground_texture = ExtResource("3_xdj1d")
+shader_parameter/noise = SubResource("NoiseTexture2D_3hi84")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jw5aj"]
+material = SubResource("ShaderMaterial_bhvuq")
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvquu"]
+render_priority = 0
+shader = ExtResource("2_33x8f")
+shader_parameter/sky_texture = ExtResource("4_pi8bn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1ao1i"]
+material = SubResource("ShaderMaterial_kvquu")
+
+[node name="Demo" type="Node3D"]
+script = ExtResource("1_up2fw")
+
+[node name="tree01" type="Sprite3D" parent="."]
+transform = Transform3D(0.175126, 0, 0, 0, 0.175126, 0, 0, 0, 1, 2.81562, 3.30397, -9.03614)
+texture = ExtResource("1_d7vts")
+
+[node name="tree02" type="Sprite3D" parent="."]
+transform = Transform3D(0.660919, 0, 0, 0, 0.660919, 0, 0, 0, 1, -10.6677, 2.27814, -17.5046)
+texture = ExtResource("1_6cuxm")
+
+[node name="tree04" type="Sprite3D" parent="."]
+transform = Transform3D(0.226587, 0, 0, 0, 0.226587, 0, 0, 0, 1, -0.556976, 2.27814, -13.0666)
+texture = ExtResource("3_roqgj")
+
+[node name="tree05" type="Sprite3D" parent="."]
+transform = Transform3D(0.660919, 0, 0, 0, 0.660919, 0, 0, 0, 1, 7.48745, 2.27814, -18.5519)
+texture = ExtResource("1_6cuxm")
+
+[node name="tree06" type="Sprite3D" parent="."]
+transform = Transform3D(0.660919, 0, 0, 0, 0.660919, 0, 0, 0, 1, 7.99139, 2.27814, -12.3469)
+texture = ExtResource("1_6cuxm")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999424, 0.0339227, 0, -0.0339227, 0.999424, 0, 4.90184, 4.78981)
+fov = 55.0
+size = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.946459, 0.0375529, -0.320631, 0.0793195, 0.935712, 0.343733, 0.312927, -0.350761, 0.882634, 0, 8.38562, 4.94976)
+
+[node name="groundmesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(65.7307, 0, 0, 0, -1.51068e-06, 75, 0, -34.5604, -3.27835e-06, 0, 0, -16.869)
+mesh = SubResource("QuadMesh_jw5aj")
+
+[node name="skymesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(76.6774, 0, 0, 0, 38.3387, 0, 0, 0, 100, 0, 6.33816, -28.5523)
+mesh = SubResource("QuadMesh_1ao1i")
+
+[node name="Cloud1" parent="." instance=ExtResource("10_28qjk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.795, 12.2228, -19.5774)
+
+[node name="Cloud2" parent="." instance=ExtResource("11_hphhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03355, 8.65518, -8.31936)
+
+[node name="Cloud3" parent="." instance=ExtResource("11_hphhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87605, 8.63907, -14.1492)
+
+[node name="Rabbit" parent="." instance=ExtResource("11_2knhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5222, 1.05732, -10.822)
+
+[node name="Rabbit2" parent="." instance=ExtResource("11_2knhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8946, 1.26615, -14.2816)
+direction = 1.0

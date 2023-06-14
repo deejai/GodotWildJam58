@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0iy47pgmk8ra"]
+
+[ext_resource type="Texture2D" uid="uid://cf1g3phsr0qrb" path="res://Assets/test-droplet2.png" id="1_adw77"]
+[ext_resource type="Script" path="res://Objects/Droplet.gd" id="1_x8v62"]
+
+[node name="Droplet" type="Node3D"]
+script = ExtResource("1_x8v62")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = ExtResource("1_adw77")

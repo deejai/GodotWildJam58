@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjfb6nimdasq8"]
+
+[ext_resource type="Script" path="res://Objects/Cloud.gd" id="1_bykqe"]
+[ext_resource type="Shader" path="res://string.gdshader" id="2_nfdpe"]
+[ext_resource type="Texture2D" uid="uid://bf4mayd10vbji" path="res://Assets/cloud-blackround.png" id="3_6t4gu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kqyyl"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofxgm"]
+render_priority = 0
+shader = ExtResource("2_nfdpe")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_evo3v"]
+material = SubResource("ShaderMaterial_ofxgm")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 10.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ijrb"]
+size = Vector3(1, 1, 0.1)
+
+[node name="Cloud1" type="Node3D"]
+script = ExtResource("1_bykqe")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.1202, 0)
+node_a = NodePath("../Anchor")
+node_b = NodePath("../Rig")
+params/impulse_clamp = 10.0
+
+[node name="Anchor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.082561, 9.2001, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.10565)
+shape = SubResource("BoxShape3D_kqyyl")
+
+[node name="Rig" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.366, 4.89198, -0.02)
+mesh = SubResource("CylinderMesh_evo3v")
+skeleton = NodePath("../cloud02")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21858, 4.89198, -0.02)
+mesh = SubResource("CylinderMesh_evo3v")
+skeleton = NodePath("../cloud02")
+
+[node name="cloud02" type="Sprite3D" parent="Rig"]
+transform = Transform3D(0.395461, 0.0372637, 0, -0.0372637, 0.395461, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("3_6t4gu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00873387)
+visible = false
+shape = SubResource("BoxShape3D_1ijrb")
