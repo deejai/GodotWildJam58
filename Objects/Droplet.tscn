@@ -8,4 +8,5 @@ script = ExtResource("1_x8v62")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+alpha_cut = 1
 texture = ExtResource("1_adw77")

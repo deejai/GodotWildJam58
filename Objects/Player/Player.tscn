@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://b55crcsyr8454"]
+
+[ext_resource type="Texture2D" uid="uid://c3vddgduv7e11" path="res://Assets/mainchar.png" id="1_p6vul"]
+[ext_resource type="Script" path="res://Objects/Player/Player.gd" id="1_pafee"]
+[ext_resource type="Texture2D" uid="uid://ntqstkc44hhc" path="res://Assets/cursor2.png" id="3_kqq3n"]
+[ext_resource type="Shader" path="res://Objects/Player/progress.gdshader" id="4_jj4tg"]
+[ext_resource type="AudioStream" uid="uid://bow518oja05ny" path="res://Assets/Audio/I was sworn.mp3" id="5_rfltu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3hh6"]
+size = Vector3(1, 3.5, 3.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0c5jv"]
+render_priority = 0
+shader = ExtResource("4_jj4tg")
+shader_parameter/color = Vector3(0.5, 0.5, 0.5)
+shader_parameter/alpha = 0.5
+shader_parameter/progress = 0.669
+
+[sub_resource type="SphereMesh" id="SphereMesh_orpyq"]
+material = SubResource("ShaderMaterial_0c5jv")
+radius = 1.2
+height = 2.4
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_pafee")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+offset = Vector2(-100, 1000)
+alpha_cut = 1
+texture = ExtResource("1_p6vul")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69012, 0)
+shape = SubResource("BoxShape3D_t3hh6")
+
+[node name="CycloneCD" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="ClycloneSpawnerIndicator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99, 2.791, 0.136332)
+
+[node name="CycloneSpawnerSprite" type="Sprite3D" parent="ClycloneSpawnerIndicator"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("3_kqq3n")
+
+[node name="ProgressMesh" type="MeshInstance3D" parent="ClycloneSpawnerIndicator"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("SphereMesh_orpyq")
+skeleton = NodePath("../..")
+
+[node name="intro_line" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rfltu")
+volume_db = -6.0
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="timeout" from="CycloneCD" to="." method="_on_cyclone_cd_timeout"]

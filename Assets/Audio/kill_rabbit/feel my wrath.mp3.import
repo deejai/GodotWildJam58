@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4djc0mgotsnp"
+path="res://.godot/imported/feel my wrath.mp3-98ae0c51fae95fe20be4c2bfb00e7b94.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/kill_rabbit/feel my wrath.mp3"
+dest_files=["res://.godot/imported/feel my wrath.mp3-98ae0c51fae95fe20be4c2bfb00e7b94.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

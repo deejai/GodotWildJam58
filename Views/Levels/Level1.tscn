@@ -1,0 +1,225 @@
+[gd_scene load_steps=23 format=3 uid="uid://deuhs0rvspnee"]
+
+[ext_resource type="Script" path="res://Views/Levels/Level1.gd" id="1_stb8g"]
+[ext_resource type="Texture2D" uid="uid://cifj8qm3crkbo" path="res://Assets/tree-pencil-2.png" id="2_sgnol"]
+[ext_resource type="Shader" path="res://ground.gdshader" id="3_um1fq"]
+[ext_resource type="Texture2D" uid="uid://jud8sqbpx24" path="res://Assets/tree-pencil-1.png" id="3_yhdjf"]
+[ext_resource type="Texture2D" uid="uid://bxl83d33yx06o" path="res://Assets/tree-pencil-3.png" id="4_76osf"]
+[ext_resource type="Texture2D" uid="uid://dbvosii04t" path="res://Assets/canvas-blue.png" id="4_u86dn"]
+[ext_resource type="Shader" path="res://sky.gdshader" id="5_vgcnr"]
+[ext_resource type="Texture2D" uid="uid://gp6d4k04f5e1" path="res://Assets/sky-blue.png" id="6_jnkaa"]
+[ext_resource type="PackedScene" uid="uid://bjfb6nimdasq8" path="res://Objects/Cloud1.tscn" id="7_1c1rl"]
+[ext_resource type="PackedScene" uid="uid://c0aqcu8vwdw67" path="res://Objects/Cloud2.tscn" id="8_1iye2"]
+[ext_resource type="PackedScene" uid="uid://brae17nbsvrsc" path="res://Objects/Rabbit.tscn" id="9_rxobq"]
+[ext_resource type="PackedScene" uid="uid://de8f4vv5lq5fu" path="res://MetaObjects/RainMaker.tscn" id="10_wdtum"]
+[ext_resource type="PackedScene" uid="uid://b55crcsyr8454" path="res://Objects/Player/Player.tscn" id="11_2bkqs"]
+[ext_resource type="PackedScene" uid="uid://c8nfodyx202i5" path="res://MetaObjects/GameCamera.tscn" id="14_n1xm0"]
+[ext_resource type="PackedScene" uid="uid://c3a4k66sn0y5g" path="res://Objects/Shrine.tscn" id="15_4qh46"]
+[ext_resource type="PackedScene" uid="uid://b5ynrm87sd3m1" path="res://Objects/Bird.tscn" id="16_1rl3m"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uels5"]
+frequency = 0.022
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3hi84"]
+width = 1000
+height = 1000
+noise = SubResource("FastNoiseLite_uels5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhvuq"]
+render_priority = 0
+shader = ExtResource("3_um1fq")
+shader_parameter/ground_texture = ExtResource("4_u86dn")
+shader_parameter/noise = SubResource("NoiseTexture2D_3hi84")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jw5aj"]
+material = SubResource("ShaderMaterial_bhvuq")
+subdivide_width = 128
+subdivide_depth = 128
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvquu"]
+render_priority = 0
+shader = ExtResource("5_vgcnr")
+shader_parameter/sky_texture = ExtResource("6_jnkaa")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1ao1i"]
+material = SubResource("ShaderMaterial_kvquu")
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_stb8g")
+
+[node name="tree01" type="Sprite3D" parent="."]
+transform = Transform3D(0.318531, 0, 0, 0, 0.318531, 0, 0, 0, 0.480214, -7.54226, 3.79584, -20.7719)
+alpha_cut = 1
+texture = ExtResource("2_sgnol")
+
+[node name="tree02" type="Sprite3D" parent="."]
+transform = Transform3D(0.279689, 0, 0, 0, 0.279689, 0, 0, 0, 0.423181, -14.7475, 4.72773, -21.2514)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("3_yhdjf")
+
+[node name="tree04" type="Sprite3D" parent="."]
+transform = Transform3D(0.265999, 0, 0, 0, 0.23608, 0, 0, 0, 0.423181, -23.3745, 4.23528, -21.2514)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("3_yhdjf")
+
+[node name="tree05" type="Sprite3D" parent="."]
+transform = Transform3D(0.269531, 0, 0, 0, 0.269531, 0, 0, 0, 0.614814, -19.7169, 4.5926, -24.7985)
+alpha_cut = 1
+texture = ExtResource("2_sgnol")
+
+[node name="tree06" type="Sprite3D" parent="."]
+transform = Transform3D(0.269531, 0, 0, 0, 0.269531, 0, 0, 0, 0.614814, -0.308617, 4.50071, -16.5058)
+alpha_cut = 1
+texture = ExtResource("2_sgnol")
+
+[node name="tree07" type="Sprite3D" parent="."]
+transform = Transform3D(0.279689, 0, 0, 0, 0.279689, 0, 0, 0, 0.423181, -2.96139, 4.73729, -18.7401)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("3_yhdjf")
+
+[node name="tree03" type="Sprite3D" parent="."]
+transform = Transform3D(0.318531, 0, 0, 0, 0.318531, 0, 0, 0, 0.480214, 11.4409, 3.79584, -22.6534)
+alpha_cut = 1
+texture = ExtResource("2_sgnol")
+
+[node name="tree08" type="Sprite3D" parent="."]
+transform = Transform3D(0.279689, 0, 0, 0, 0.279689, 0, 0, 0, 0.423181, 2.17645, 4.72773, -22.8017)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("3_yhdjf")
+
+[node name="tree09" type="Sprite3D" parent="."]
+transform = Transform3D(0.275068, 0, 0, 0, 0.275068, 0, 0, 0, 1.21157, 9.08784, 4.75706, -17.7538)
+alpha_cut = 1
+texture = ExtResource("3_yhdjf")
+
+[node name="tree10" type="Sprite3D" parent="."]
+transform = Transform3D(0.269531, 0, 0, 0, 0.269531, 0, 0, 0, 0.614814, 5.19249, 4.5926, -18.7209)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("2_sgnol")
+
+[node name="tree11" type="Sprite3D" parent="."]
+transform = Transform3D(0.269531, 0, 0, 0, 0.269531, 0, 0, 0, 0.614814, 19.1211, 4.50071, -18.3873)
+alpha_cut = 1
+texture = ExtResource("2_sgnol")
+
+[node name="tree19" type="Sprite3D" parent="."]
+transform = Transform3D(0.228892, 0, 0, 0, 0.200663, 0, 0, 0, 0.614814, 23.9497, 3.26624, -22.3801)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("2_sgnol")
+
+[node name="tree12" type="Sprite3D" parent="."]
+transform = Transform3D(0.279689, 0, 0, 0, 0.279689, 0, 0, 0, 0.423181, 21.6159, 4.73729, -24.9058)
+alpha_cut = 1
+texture = ExtResource("3_yhdjf")
+
+[node name="tree18" type="Sprite3D" parent="."]
+transform = Transform3D(0.244277, 0, 0, 0, 0.244559, 0, 0, 0, 0.423182, 15.0683, 4.40492, -21.1029)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("3_yhdjf")
+
+[node name="tree13" type="Sprite3D" parent="."]
+transform = Transform3D(0.43175, 0, 0, 0, 0.43175, 0, 0, 0, 0.423181, 14.9165, 4.73729, -15.0992)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("4_76osf")
+
+[node name="tree14" type="Sprite3D" parent="."]
+transform = Transform3D(0.507774, 0, 0, 0, 0.47331, 0, 0, 0, 0.423181, 5.96574, 5.10431, -12.8944)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("4_76osf")
+
+[node name="tree15" type="Sprite3D" parent="."]
+transform = Transform3D(0.43175, 0, 0, 0, 0.43175, 0, 0, 0, 0.423181, -10.2037, 4.73729, -15.6844)
+alpha_cut = 1
+texture = ExtResource("4_76osf")
+
+[node name="tree17" type="Sprite3D" parent="."]
+transform = Transform3D(0.43175, 0, 0, 0, 0.43175, 0, 0, 0, 0.423181, -17.6567, 4.73729, -17.1306)
+flip_h = true
+alpha_cut = 1
+texture = ExtResource("4_76osf")
+
+[node name="tree16" type="Sprite3D" parent="."]
+transform = Transform3D(0.43175, 0, 0, 0, 0.43175, 0, 0, 0, 0.423181, -2.85986, 4.73729, -12.8566)
+alpha_cut = 1
+texture = ExtResource("4_76osf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.946459, 0.0375529, -0.320631, 0.0793195, 0.935712, 0.343733, 0.312927, -0.350761, 0.882634, 0, 8.38562, 4.94976)
+
+[node name="groundmesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(65.7307, 0, 0, 0, -1.51068e-06, 75, 0, -34.5604, -3.27835e-06, 0, 0, -16.869)
+mesh = SubResource("QuadMesh_jw5aj")
+
+[node name="skymesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(76.6774, 0, 0, 0, 38.3387, 0, 0, 0, 100, 0, 6.33816, -28.5523)
+mesh = SubResource("QuadMesh_1ao1i")
+
+[node name="Cloud1" parent="." instance=ExtResource("7_1c1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1797, 9.89924, -8.58187)
+
+[node name="Cloud4" parent="." instance=ExtResource("7_1c1rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79673, 9.65338, -8.58187)
+
+[node name="Cloud2" parent="." instance=ExtResource("8_1iye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44625, 9.94215, -8.58187)
+
+[node name="Cloud5" parent="." instance=ExtResource("8_1iye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.7202, 8.81435, -8.58187)
+
+[node name="Cloud3" parent="." instance=ExtResource("8_1iye2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.87605, 9.59504, -8.58187)
+
+[node name="Rabbit" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7549, 1.07765, -8.8595)
+
+[node name="Rabbit2" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.982696, 1.18528, -9.9082)
+
+[node name="Rabbit3" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7639, 1.07765, -9.73092)
+
+[node name="Rabbit4" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0761, 1.18528, -10.1433)
+
+[node name="Rabbit5" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3823, 1.07765, -8.8595)
+
+[node name="Rabbit6" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6101, 1.18528, -9.9082)
+
+[node name="Rabbit7" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3912, 1.07765, -9.73092)
+
+[node name="Rabbit8" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7035, 1.18528, -10.1433)
+
+[node name="Rabbit9" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3948, 1.07765, -8.8595)
+
+[node name="Rabbit10" parent="." instance=ExtResource("9_rxobq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6226, 1.18528, -9.9082)
+
+[node name="RainMaker" parent="." instance=ExtResource("10_wdtum")]
+
+[node name="Player" parent="." instance=ExtResource("11_2bkqs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2272, 0, -9.18399)
+
+[node name="GameCamera" parent="." instance=ExtResource("14_n1xm0")]
+
+[node name="Shrine" parent="." instance=ExtResource("15_4qh46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31876, 2.3687, -9.34552)
+
+[node name="Bird" parent="." instance=ExtResource("16_1rl3m")]
+transform = Transform3D(0.958492, 0.28512, 0, -0.28512, 0.958492, 0, 0, 0, 1, 6.56303, 6.31438, -13.8866)
+
+[node name="Bird2" parent="." instance=ExtResource("16_1rl3m")]
+transform = Transform3D(-0.937282, -0.348572, 8.74228e-08, -0.348572, 0.937282, 0, -8.19398e-08, -3.04731e-08, -1, -3.21506, 5.6822, -13.8866)

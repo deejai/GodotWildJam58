@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://bludifvuqsk4c"]
+
+[ext_resource type="Script" path="res://Views/MainMenu/MainMenu.gd" id="1_gguqh"]
+[ext_resource type="Texture2D" uid="uid://c3vddgduv7e11" path="res://Assets/mainchar.png" id="2_r58s0"]
+[ext_resource type="Texture2D" uid="uid://7lix7h5wby84" path="res://Assets/sky-red.png" id="3_bptri"]
+[ext_resource type="Texture2D" uid="uid://r11mkg2edknv" path="res://Assets/leaf-highres.png" id="4_f8hbx"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_gguqh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(272, 392)
+scale = Vector2(0.268485, 0.268485)
+texture = ExtResource("2_r58s0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+z_index = -1
+position = Vector2(584, 356)
+scale = Vector2(0.427252, 0.427252)
+texture = ExtResource("3_bptri")
+
+[node name="StartButtonLeaves" type="Node2D" parent="CanvasLayer"]
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/StartButtonLeaves"]
+position = Vector2(693, 333)
+rotation = 1.57079
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_f8hbx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/StartButtonLeaves"]
+position = Vector2(780, 335)
+rotation = 1.57079
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_f8hbx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/StartButtonLeaves"]
+position = Vector2(867, 337)
+rotation = 1.57079
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_f8hbx")
+
+[node name="Sprite2D6" type="Sprite2D" parent="CanvasLayer/StartButtonLeaves"]
+position = Vector2(909, 335)
+rotation = 1.57079
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_f8hbx")
+
+[node name="Sprite2D7" type="Sprite2D" parent="CanvasLayer/StartButtonLeaves"]
+position = Vector2(889, 392)
+rotation = 0.651785
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_f8hbx")
+
+[node name="Sprite2D8" type="Sprite2D" parent="CanvasLayer/StartButtonLeaves"]
+position = Vector2(880, 289)
+rotation = 2.2218
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_f8hbx")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 535.0
+offset_top = 175.0
+offset_right = 1088.0
+offset_bottom = 493.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

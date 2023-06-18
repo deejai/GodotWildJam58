@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://de8f4vv5lq5fu"]
+
+[ext_resource type="Script" path="res://MetaObjects/RainMaker.gd" id="1_5jxft"]
+
+[node name="RainMaker" type="Node3D"]
+script = ExtResource("1_5jxft")

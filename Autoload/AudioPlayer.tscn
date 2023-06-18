@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3nklnpp2kq3"]
+[gd_scene load_steps=11 format=3 uid="uid://d3nklnpp2kq3"]
 
 [ext_resource type="Script" path="res://Autoload/AudioPlayer.gd" id="1_rrtgy"]
 [ext_resource type="AudioStream" uid="uid://dgae3roc6wwo4" path="res://Assets/Audio/rain-in-forest-birds-nature-111405.mp3" id="2_fivum"]
+[ext_resource type="AudioStream" uid="uid://6e5nhb00hn1e" path="res://Assets/Audio/kill_rabbit/begone foul beast.mp3" id="3_d60ra"]
+[ext_resource type="AudioStream" uid="uid://br2a1hhiwf6ao" path="res://Assets/Audio/kill_rabbit/wraghhhh.mp3" id="4_mjmlb"]
+[ext_resource type="AudioStream" uid="uid://b4djc0mgotsnp" path="res://Assets/Audio/kill_rabbit/feel my wrath.mp3" id="5_hdney"]
+[ext_resource type="AudioStream" uid="uid://bkqcjqpuvwo4h" path="res://Assets/Audio/player_hurt/a demon incarnate.mp3" id="6_ilqxq"]
+[ext_resource type="AudioStream" uid="uid://6du3gme1od28" path="res://Assets/Audio/player_hurt/it bit me.mp3" id="7_x1eyr"]
+[ext_resource type="AudioStream" uid="uid://baja0olrcwgp0" path="res://Assets/Audio/player_hurt/Under attack.mp3" id="8_8arnk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gan0q"]
+streams_count = 3
+stream_0/stream = ExtResource("3_d60ra")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_mjmlb")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_hdney")
+stream_2/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3kgld"]
+streams_count = 3
+stream_0/stream = ExtResource("6_ilqxq")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_x1eyr")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_8arnk")
+stream_2/weight = 1.0
 
 [node name="AudioPlayer" type="Node2D"]
 script = ExtResource("1_rrtgy")
@@ -9,3 +33,11 @@ script = ExtResource("1_rrtgy")
 [node name="RainLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fivum")
 volume_db = -12.0
+
+[node name="KillRabbitPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_gan0q")
+volume_db = -6.0
+
+[node name="PlayerHurtPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3kgld")
+volume_db = -6.0

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://3a5ebb3jc4h2"]
+
+[ext_resource type="Script" path="res://Objects/Particles/BloodParticles.gd" id="1_nma7m"]
+[ext_resource type="Shader" path="res://Objects/Particles/BloodParticles.gdshader" id="2_mefd2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2oaxj"]
+render_priority = 0
+shader = ExtResource("2_mefd2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8frmj"]
+material = SubResource("ShaderMaterial_2oaxj")
+radius = 0.025
+height = 0.05
+radial_segments = 4
+rings = 3
+
+[sub_resource type="Gradient" id="Gradient_0g7b7"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
+
+[node name="BloodParticles" type="Node3D"]
+script = ExtResource("1_nma7m")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 0.98
+lifetime_randomness = 0.21
+mesh = SubResource("SphereMesh_8frmj")
+direction = Vector3(0, 1, 0.1)
+gravity = Vector3(0, -19.6, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_0g7b7")

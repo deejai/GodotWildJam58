@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvdxi6wtfkadu"]
+
+[ext_resource type="Script" path="res://Objects/AudioInstances/SelfRemovingSound.gd" id="1_spvcb"]
+[ext_resource type="AudioStream" uid="uid://dhx4h8pgw75ym" path="res://Assets/Audio/bug-zapper-47300.mp3" id="2_1gjdc"]
+
+[node name="SelfRemovingSound" type="Node3D"]
+script = ExtResource("1_spvcb")
+
+[node name="Zap" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_1gjdc")

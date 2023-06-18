@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4xspt0txlvlx"]
+
+[ext_resource type="Texture2D" uid="uid://bswvu7fcvdgfs" path="res://Assets/stick-lowres.png" id="1_j4odt"]
+[ext_resource type="Script" path="res://Objects/CycloneParticle.gd" id="1_oducg"]
+
+[node name="Twig" type="Node3D"]
+script = ExtResource("1_oducg")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+texture = ExtResource("1_j4odt")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3a4k66sn0y5g"]
+
+[ext_resource type="Texture2D" uid="uid://dn7pq5t652m36" path="res://Assets/shrine.png" id="1_jd1d1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhexx"]
+size = Vector3(1.5, 4, 6)
+
+[node name="Shrine" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.160883, 0, -0.118813, 0, 0.2, 0, 0.118813, 0, 0.160883, 0, 0, 0)
+alpha_cut = 1
+texture = ExtResource("1_jd1d1")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_mhexx")

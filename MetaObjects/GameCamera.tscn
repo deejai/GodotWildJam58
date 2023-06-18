@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8nfodyx202i5"]
+
+[ext_resource type="Script" path="res://MetaObjects/GameCamera.gd" id="1_2286x"]
+[ext_resource type="Shader" path="res://MetaObjects/whiteflash.gdshader" id="2_addmn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rbx0f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fw38k"]
+render_priority = 0
+shader = ExtResource("2_addmn")
+
+[node name="GameCamera" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999424, 0.0339227, 0, -0.0339227, 0.999424, 0, 4.90184, 4.78981)
+fov = 55.0
+size = 50.0
+script = ExtResource("1_2286x")
+
+[node name="WhiteFlash" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(100, 0, 0, 0, -3.39228, -99.9424, 0, 99.9424, -3.39228, 0, 0.957656, -4.76006)
+visible = false
+mesh = SubResource("PlaneMesh_rbx0f")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_fw38k")
+
+[node name="LightningFlash1" type="Timer" parent="Camera3D"]
+wait_time = 0.05
+one_shot = true
+
+[node name="LightningFlashWait" type="Timer" parent="Camera3D"]
+wait_time = 0.05
+one_shot = true
+
+[node name="LightningFlash2" type="Timer" parent="Camera3D"]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="Camera3D/LightningFlash1" to="Camera3D" method="_on_lightning_flash_1_timeout"]
+[connection signal="timeout" from="Camera3D/LightningFlashWait" to="Camera3D" method="_on_lightning_flash_wait_timeout"]
+[connection signal="timeout" from="Camera3D/LightningFlash2" to="Camera3D" method="_on_lightning_flash_2_timeout"]

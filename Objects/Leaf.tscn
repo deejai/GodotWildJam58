@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7u4h3einxkoo"]
+
+[ext_resource type="Script" path="res://Objects/CycloneParticle.gd" id="1_lvyty"]
+[ext_resource type="Texture2D" uid="uid://c35w2ww4pl5n8" path="res://Assets/leaf-lowres.png" id="1_u4nfn"]
+
+[node name="Leaf" type="Node3D"]
+script = ExtResource("1_lvyty")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+texture = ExtResource("1_u4nfn")
